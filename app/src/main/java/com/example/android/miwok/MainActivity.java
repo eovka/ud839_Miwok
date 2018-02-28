@@ -21,7 +21,6 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.TextView;
 
 import com.example.android.miwok.databinding.ActivityMainBinding;
 
