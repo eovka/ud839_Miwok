@@ -43,8 +43,12 @@ public class NumbersActivity extends AppCompatActivity {
 
         LinearLayout rootView = findViewById(R.id.rootView);
 
-        TextView wordView = new TextView(this);
-        wordView.setText(words.get(0));
-        rootView.addView(wordView);
+        int index = 0;
+        while (index < 9) {
+            TextView wordView = new TextView(this);
+            wordView.setText(words.get(index));
+            rootView.addView(wordView);
+            index++;
+        }
     }
 }
