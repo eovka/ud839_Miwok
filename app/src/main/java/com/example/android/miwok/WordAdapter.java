@@ -31,7 +31,7 @@ public class WordAdapter extends ArrayAdapter<Word> {
         Word currentWord = getItem(position);
         TextView miwokTranslationView = listItemView.findViewById(R.id.miwok_word);
         miwokTranslationView.setText(currentWord.getMiwokTranslation());
-        TextView defaultTranslationView = listItemView.findViewById(R.id.english_word);
+        TextView defaultTranslationView = listItemView.findViewById(R.id.default_word);
         defaultTranslationView.setText(currentWord.getDefaultTranslation());
         return listItemView;
     }
