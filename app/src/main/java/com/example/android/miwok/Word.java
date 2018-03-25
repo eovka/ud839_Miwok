@@ -1,7 +1,5 @@
 package com.example.android.miwok;
 
-import android.graphics.drawable.Drawable;
-
 public class Word {
     // class state
     private String mMiwokTranslation;
