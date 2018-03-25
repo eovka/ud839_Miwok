@@ -1,14 +1,23 @@
 package com.example.android.miwok;
 
+import android.graphics.drawable.Drawable;
+
 public class Word {
     // class state
     private String mMiwokTranslation;
     private String mDefaultTranslation;
+    private int mImageResourceId;
 
-    // class constructor
+    // class constructors
     public Word(String miwokTranslation, String defaultTranslation) {
         mMiwokTranslation = miwokTranslation;
         mDefaultTranslation = defaultTranslation;
+    }
+
+    public Word(String miwokTranslation, String defaultTranslation, int imageResourceId) {
+        mMiwokTranslation = miwokTranslation;
+        mDefaultTranslation = defaultTranslation;
+        mImageResourceId = imageResourceId;
     }
 
     // class methods
@@ -17,5 +26,8 @@ public class Word {
     }
     public String getDefaultTranslation() {
         return mDefaultTranslation;
+    }
+    public int getImageResourceId() {
+        return mImageResourceId;
     }
 }
