@@ -1,6 +1,5 @@
 package com.example.android.miwok;
 
-
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -11,11 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class NumbersFragment extends Fragment {
+public class ColorsFragment extends Fragment {
     private MediaPlayer mMediaPlayer;
     private AudioManager mAudioManager;
 
@@ -30,11 +28,11 @@ public class NumbersFragment extends Fragment {
                     mMediaPlayer.stop();
                     releaseMediaPlayer();
                     break;
-                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+                case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT:
                     mMediaPlayer.pause();
                     mMediaPlayer.seekTo(0);
                     break;
-                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
+                case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK:
                     mMediaPlayer.pause();
                     mMediaPlayer.seekTo(0);
                     break;
@@ -49,8 +47,7 @@ public class NumbersFragment extends Fragment {
         }
     };
 
-
-    public NumbersFragment() {
+    public ColorsFragment() {
         // Required empty public constructor
     }
 
@@ -60,22 +57,19 @@ public class NumbersFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.word_list, container, false);
 
-
         mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<Word> words = new ArrayList<>();
-        words.add(new Word("lutti","one", R.drawable.number_one, R.raw.number_one));
-        words.add(new Word("otiiko", "two", R.drawable.number_two, R.raw.number_two));
-        words.add(new Word("tolookosu", "three", R.drawable.number_three, R.raw.number_three));
-        words.add(new Word("oyyisa", "four", R.drawable.number_four, R.raw.number_four));
-        words.add(new Word("massokka", "five", R.drawable.number_five, R.raw.number_five));
-        words.add(new Word("temmokka","six", R.drawable.number_six, R.raw.number_six));
-        words.add(new Word("kenekaku","seven", R.drawable.number_seven, R.raw.number_seven));
-        words.add(new Word("kawinta", "eight", R.drawable.number_eight, R.raw.number_eight));
-        words.add(new Word("wo’e","nine", R.drawable.number_nine, R.raw.number_nine));
-        words.add(new Word("na’aacha","ten", R.drawable.number_ten, R.raw.number_ten));
+        words.add(new Word("weṭeṭṭi", "red", R.drawable.color_red, R.raw.color_red));
+        words.add(new Word("chokokki", "green", R.drawable.color_green, R.raw.color_green));
+        words.add(new Word("ṭakaakki", "brown", R.drawable.color_brown, R.raw.color_brown));
+        words.add(new Word("ṭopoppi", "gray", R.drawable.color_gray, R.raw.color_gray));
+        words.add(new Word("kululli", "black", R.drawable.color_black, R.raw.color_black));
+        words.add(new Word("kelelli", "white", R.drawable.color_white, R.raw.color_white));
+        words.add(new Word("ṭopiisә", "dusty yellow", R.drawable.color_dusty_yellow, R.raw.color_dusty_yellow));
+        words.add(new Word("chiwiiṭә", "mustard yellow", R.drawable.color_mustard_yellow, R.raw.color_mustard_yellow));
 
-        WordAdapter wordAdapter = new WordAdapter(getActivity(), words, R.color.category_numbers);
+        WordAdapter wordAdapter = new WordAdapter(getActivity(), words, R.color.category_colors);
         ListView listView = rootView.findViewById(R.id.list);
         listView.setAdapter(wordAdapter);
 
@@ -95,7 +89,6 @@ public class NumbersFragment extends Fragment {
 
         return rootView;
     }
-
     private void releaseMediaPlayer() {
         if (mMediaPlayer != null) {
             mMediaPlayer.release();
@@ -108,5 +101,5 @@ public class NumbersFragment extends Fragment {
     public void onStop() {
         super.onStop();
         releaseMediaPlayer();
-}
+    }
 }

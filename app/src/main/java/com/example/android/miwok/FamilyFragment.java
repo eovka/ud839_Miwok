@@ -1,6 +1,5 @@
 package com.example.android.miwok;
 
-
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
@@ -11,11 +10,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.TextView;
+
 
 import java.util.ArrayList;
 
-public class NumbersFragment extends Fragment {
+public class FamilyFragment extends Fragment {
     private MediaPlayer mMediaPlayer;
     private AudioManager mAudioManager;
 
@@ -30,11 +29,11 @@ public class NumbersFragment extends Fragment {
                     mMediaPlayer.stop();
                     releaseMediaPlayer();
                     break;
-                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT:
+                case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT:
                     mMediaPlayer.pause();
                     mMediaPlayer.seekTo(0);
                     break;
-                case AudioManager.AUDIOFOCUS_LOSS_TRANSIENT_CAN_DUCK:
+                case AudioManager.AUDIOFOCUS_GAIN_TRANSIENT_MAY_DUCK:
                     mMediaPlayer.pause();
                     mMediaPlayer.seekTo(0);
                     break;
@@ -49,8 +48,7 @@ public class NumbersFragment extends Fragment {
         }
     };
 
-
-    public NumbersFragment() {
+    public FamilyFragment() {
         // Required empty public constructor
     }
 
@@ -60,22 +58,21 @@ public class NumbersFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.word_list, container, false);
 
-
         mAudioManager = (AudioManager) getActivity().getSystemService(Context.AUDIO_SERVICE);
 
         final ArrayList<Word> words = new ArrayList<>();
-        words.add(new Word("lutti","one", R.drawable.number_one, R.raw.number_one));
-        words.add(new Word("otiiko", "two", R.drawable.number_two, R.raw.number_two));
-        words.add(new Word("tolookosu", "three", R.drawable.number_three, R.raw.number_three));
-        words.add(new Word("oyyisa", "four", R.drawable.number_four, R.raw.number_four));
-        words.add(new Word("massokka", "five", R.drawable.number_five, R.raw.number_five));
-        words.add(new Word("temmokka","six", R.drawable.number_six, R.raw.number_six));
-        words.add(new Word("kenekaku","seven", R.drawable.number_seven, R.raw.number_seven));
-        words.add(new Word("kawinta", "eight", R.drawable.number_eight, R.raw.number_eight));
-        words.add(new Word("wo’e","nine", R.drawable.number_nine, R.raw.number_nine));
-        words.add(new Word("na’aacha","ten", R.drawable.number_ten, R.raw.number_ten));
+        words.add(new Word("әpә", "father", R.drawable.family_father, R.raw.family_father));
+        words.add(new Word("әṭa", "mother", R.drawable.family_mother, R.raw.family_mother));
+        words.add(new Word("angsi", "son", R.drawable.family_son, R.raw.family_son));
+        words.add(new Word("tune", "daughter", R.drawable.family_daughter, R.raw.family_daughter));
+        words.add(new Word("taachi", "older brother", R.drawable.family_older_brother, R.raw.family_older_brother));
+        words.add(new Word("chalitti", "younger brother", R.drawable.family_younger_brother, R.raw.family_younger_brother));
+        words.add(new Word("teṭe", "older sister", R.drawable.family_older_sister, R.raw.family_older_sister));
+        words.add(new Word("kolliti", "younger sister", R.drawable.family_younger_sister, R.raw.family_younger_sister));
+        words.add(new Word("ama", "grandmother", R.drawable.family_grandmother, R.raw.family_grandmother));
+        words.add(new Word("paapa", "grandfather", R.drawable.family_grandfather, R.raw.family_grandfather));
 
-        WordAdapter wordAdapter = new WordAdapter(getActivity(), words, R.color.category_numbers);
+        WordAdapter wordAdapter = new WordAdapter(getActivity(), words, R.color.category_family);
         ListView listView = rootView.findViewById(R.id.list);
         listView.setAdapter(wordAdapter);
 
@@ -92,7 +89,6 @@ public class NumbersFragment extends Fragment {
                 }
             }
         });
-
         return rootView;
     }
 
@@ -108,5 +104,5 @@ public class NumbersFragment extends Fragment {
     public void onStop() {
         super.onStop();
         releaseMediaPlayer();
-}
+    }
 }
